@@ -1,0 +1,34 @@
+# Z-shell Aliases
+
+# Display work directory content
+alias la='command -p ls --color=always --group-directories-first -AlF'
+alias li='command -p ls --color=always --group-directories-first -AlFi'
+alias ls='command -p ls --color=always --group-directories-first -F'
+
+alias ..='cd ../'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+
+alias dus='du -h --max-depth=1 | sort -rh'
+alias wtf='apropos'
+alias tt='tail -f -n 25'
+alias out='pastebinit -b paste.debian.net -f bash | xclip'
+alias k='kubectl'
+alias kctx='kubectx'
+alias kns='kubens'
+alias tf='terraform'
+alias a='ansible'
+alias ap='ansible-playbook'
+alias av='ansible-vault'
+
+# Projects navigation
+alias pp='cd $HOME/projects/petprojects'
+alias p='cd $HOME/projects'
+alias gh='cd $HOME/projects/github'
+alias nous='cd $HOME/projects/nous'
+
+# Only for Arch Linux
+alias ya='yay -Syu'
+
+# vi:syntax=zsh
+# vi:ft=zsh
