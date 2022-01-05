@@ -3,9 +3,6 @@
 # Use variables in prompt feature
 setopt prompt_subst
 
-C_RESET="%{$reset_color%}"
-NEW_LINE=$'\n'
-
 autoload -U colors && colors
 # Font colors
 C_FG_WHITE="%{$fg[white]%}"
@@ -36,6 +33,9 @@ SUCCESS_ICO=$'\uf00c '
 FAIL_ICO=$'\uf00d '
 KUBE_ICO=$'\u2388 '
 PLAY_ICO=$'\uf04b '
+
+C_RESET="%{$reset_color%}"
+NEW_LINE=$'\n'
 
 if [ "$(id -u)" -eq 0 ]; then
   C_FG_MAIN="${C_FG_RED}"
@@ -84,7 +84,7 @@ function zsh_prompt_command {
     export PS2="${C_FG_RED}%? ${FAIL_ICO}${C_RESET}"
   fi
   [[ -n "${VIRTUAL_ENV}" ]] && VENV_PS1="${C_FG_YELLOW}${PY_ICO}${C_FG_CYAN}${VIRTUAL_ENV##*/}${C_RESET}"
-  export PROMPT="${LOGI_WORKDIR}${C_FG_YELLOW} %~ ${C_FG_MAIN}%n${C_FG_BLUE}${ARCH_ICO}${C_RESET}%m${C_RESET} ${GIT_PS1} ${KUBE_PS1} ${VENV_PS1}${NEW_LINE}${C_FG_BLUE}${PLAY_ICO}${C_RESET} "
+  export PROMPT="${LOGI_WORKDIR}${C_FG_YELLOW} %~ ${C_FG_MAIN}%n${ARCH_ICO}%m${C_RESET} ${GIT_PS1} ${KUBE_PS1} ${VENV_PS1}${NEW_LINE}${C_FG_BLUE}${PLAY_ICO}${C_RESET} "
   export RPROMPT="${PS2}"
 }
 
