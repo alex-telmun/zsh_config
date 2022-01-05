@@ -33,7 +33,6 @@ SAVEHIST=100000
 # Autocomplete configuration
 autoload -Uz compinit && compinit
 setopt COMPLETEALIASES
-complete -o nospace -C /usr/bin/terraform terraform
 zstyle ':completion:*' menu select
 zstyle ':completion:*' rehash true
 autoload -U +X bashcompinit && bashcompinit
