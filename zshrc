@@ -38,6 +38,7 @@ zstyle ':completion:*' rehash true
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/mcli mcli
 complete -o nospace -C /usr/bin/terraform terraform
+complete -o nospace -C /usr/bin/packer packer
 
 # $PATH configuration
 typeset -U path
