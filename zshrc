@@ -2,24 +2,12 @@
 bindkey -e
 
 # Remembering recent directories
-autoload -Uz add-zsh-hook
-
-DIRSTACKFILE="$HOME/.zdirs"
-if [[ -f "$DIRSTACKFILE" ]] && (( ${#dirstack} == 0 )); then
-        dirstack=("${(@f)"$(< "$DIRSTACKFILE")"}")
-        [[ -d "${dirstack[1]}" ]] && cd -- "${dirstack[1]}"
-fi
-chpwd_dirstack() {
-        print -l -- "$PWD" "${(u)dirstack[@]}" > "$DIRSTACKFILE"
-}
-
-DIRSTACKSIZE='20'
-add-zsh-hook -Uz chpwd chpwd_dirstack
 setopt AUTO_PUSHD PUSHD_SILENT PUSHD_TO_HOME
 ## Remove duplicate entries
 setopt PUSHD_IGNORE_DUPS
 ## This reverts the +/- operators.
 setopt PUSHD_MINUS
+
 # Help command configuration
 autoload -Uz run-help
 (( ${+aliases[run-help]} )) && unalias run-help

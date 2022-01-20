@@ -79,16 +79,17 @@ function zsh_prompt_command {
   fi
 
   if [[ ${LAST_COMMAND} == 0 ]]; then
-    export PS2="${C_FG_GREEN}${SUCCESS_ICO}${C_RESET}[%T]"
+    export RIGHTPS="${C_FG_GREEN}${SUCCESS_ICO}${C_RESET}[%T]"
   else
-    export PS2="${C_FG_RED}%? ${FAIL_ICO}${C_RESET}[%T]"
+    export RIGHTPS="${C_FG_RED}%? ${FAIL_ICO}${C_RESET}[%T]"
   fi
   [[ -n "${VIRTUAL_ENV}" ]] && VENV_PS1="${C_FG_YELLOW}${PY_ICO}${C_FG_CYAN}${VIRTUAL_ENV##*/}${C_RESET}"
   export PROMPT="${LOGI_WORKDIR}${C_FG_YELLOW} %~ ${C_FG_MAIN}%n${ARCH_ICO}%m${C_RESET} ${GIT_PS1} ${KUBE_PS1} ${VENV_PS1}${NEW_LINE}${C_FG_BLUE}${PLAY_ICO}${C_RESET} "
-  export RPROMPT="${PS2}"
+  export RPROMPT="${RIGHTPS}"
 }
 
 ZSH_PROMPT_COMMAND=zsh_prompt_command
+PS2="${C_FG_MAIN} ➜ ${C_RESET}"
 
 precmd() {
   eval "$ZSH_PROMPT_COMMAND"
